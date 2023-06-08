@@ -22,8 +22,21 @@ CREATE TABLE persona(
 
 CREATE TABLE lider(
 	id_lider varchar(4) NOT NULL UNIQUE
+	--activo boolean NOT NULL,
 
 ) INHERITS (persona);
+
+CREATE TABLE capitolio(
+	presidente_fk varchar(4) NOT NULL,
+	numero_habitantes int NOT NULL,
+	porcentaje_hombres real NOT NULL,
+	porcentaje_mujeres real NOT NULL,
+	ubicacion text NOT NULL,
+	clima text NOT NULL,
+	lugares_interes text NOT NULL,
+
+	FOREIGN KEY (presidente_fk) REFERENCES lider(id_lider)
+);
 
 CREATE TABLE distrito(
 	nombre varchar(2) PRIMARY KEY NOT NULL,
@@ -43,28 +56,34 @@ CREATE TABLE distrito(
 );
 
 --
+CREATE TABLE mentor(
+	id_mentor varchar(4) NOT NULL UNIQUE,
+	distrito_fk varchar(2) NOT NULL,
+	ed_juegos_ganada int NOT NULL, --Cambiar a varchar(3) para '01°'
+	--activo boolean NOT NULL,
+
+	FOREIGN KEY (distrito_fk) REFERENCES distrito(nombre)
+
+) INHERITS (persona);
 
 CREATE TABLE tributo(
 	id_tributo varchar(4) NOT NULL UNIQUE,
 	distrito_fk varchar(2) NOT NULL,
 	habilidad varchar(50) NOT NULL,
+	punt_espectaculo int NOT NULL,
+	mentor_fk varchar(4) NOT NULL,
+	activo boolean NOT NULL,
 
-	FOREIGN KEY (distrito_fk) REFERENCES distrito(nombre)
-
-) INHERITS (persona);
-
-CREATE TABLE mentor(
-	id_mentor varchar(4) NOT NULL UNIQUE,
-	distrito_fk varchar(2) NOT NULL,
-	ed_juegos_ganada int NOT NULL,
-
-	FOREIGN KEY (distrito_fk) REFERENCES distrito(nombre)
+	FOREIGN KEY (distrito_fk) REFERENCES distrito(nombre),
+	FOREIGN KEY (mentor_fk) REFERENCES mentor(id_mentor)
 
 ) INHERITS (persona);
+
 
 CREATE TABLE vigilante(
 	id_vigilante varchar(4) NOT NULL UNIQUE, 
 	puesto varchar(30) NOT NULL,
+	activo boolean NOT NULL
 
 ) INHERITS (persona);
 
@@ -73,31 +92,21 @@ CREATE TABLE prueba(
 	nombre varchar(30) NOT NULL,
 	tipo varchar(20) NOT NULL,
 	grado_dificultad_fk varchar(8) NOT NULL,
-	--evaluador_fk varchar(4) NOT NULL,
+	fecha date NOT NULL, --Checar orden de los inserts
+	evaluador_fk varchar(4) NOT NULL,
 	--vencedor_fk varchar(4) NOT NULL,
 	tiempo_empleado time NOT NULL,
 	
-	FOREIGN KEY (grado_dificultad_fk) REFERENCES grado_dificultad(color)
-	--FOREIGN KEY (evaluador_fk) REFERENCES vigilante(num_personal)
+	FOREIGN KEY (grado_dificultad_fk) REFERENCES grado_dificultad(color),
+	FOREIGN KEY (evaluador_fk) REFERENCES vigilante(id_vigilante)
 	--FOREIGN KEY (vencedor_fk) REFERENCES tributo(id_tributo)
 );
 
-CREATE TABLE capitolio(
-	--presidente varchar NOT NULL,
-	numero_habitantes int NOT NULL,
-	porcentaje_hombres real NOT NULL,
-	porcentaje_mujeres real NOT NULL,
-	ubicacion text NOT NULL,
-	clima text NOT NULL,
-	lugares_interes text NOT NULL
+--Participante es mi tabla relación entre Tributo-Prueba
+CREATE TABLE participante(
+	codigo_prueba varchar(4) NOT NULL,
+	id_participante varchar(4) NOT NULL,
 
-
-);
-
-CREATE TABLE jornada(
-	codigo_prueba
-	id_participante 
-
-	FOREIGN KEY codigo_prueba REFERENCES prueba(codigo)
-	FOREIGN KEY id_participante REFERENCES 
+	FOREIGN KEY (codigo_prueba) REFERENCES prueba(codigo),
+	FOREIGN KEY (id_participante) REFERENCES tributo(id_tributo)
 );
