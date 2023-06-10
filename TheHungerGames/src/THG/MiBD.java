@@ -40,8 +40,6 @@ public class MiBD {
 
         try {
             state=(Statement) con.createStatement();
-            // esta línea es la que ejecuta la consulta SQL, representada por el parámetro "query"
-            // por ejemplo, en un momento dado query = select * from clientes
             result=state.executeQuery(query);
         }
         catch (SQLException e) {
@@ -50,7 +48,6 @@ public class MiBD {
         return result;
     }
     
-    // En este momento este método no se utiliza en ninguna parte del programa
     public void setQuery (String query) {
         Statement state = null;
         try {

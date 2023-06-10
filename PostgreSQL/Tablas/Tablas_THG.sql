@@ -49,13 +49,16 @@ CREATE TABLE distrito(
 	ubicacion text NOT NULL,
 	clima text NOT NULL,
 	juegos_ganados int NOT NULL,
-	--tributos varchar NOT NULL,
+	--tributos_fk varchar(4) NOT NULL,
 	controlado_por_capitolio bool,
 
 	FOREIGN KEY (lider_fk) REFERENCES lider(id_lider)
+	--FOREIGN KEY (tributos_fk) REFERENCES tributo(id_tributo)
 );
 
---
+--ALTER TABLE distrito ADD tributos_fk varchar(4) NOT NULL;
+--ALTER TABLE distrito ADD FOREIGN KEY (tributos_fk) REFERENCES tributo(id_tributo);
+
 CREATE TABLE mentor(
 	id_mentor varchar(4) NOT NULL UNIQUE,
 	distrito_fk varchar(2) NOT NULL,
@@ -70,19 +73,20 @@ CREATE TABLE tributo(
 	id_tributo varchar(4) NOT NULL UNIQUE,
 	distrito_fk varchar(2) NOT NULL,
 	habilidad varchar(50) NOT NULL,
-	punt_espectaculo int NOT NULL,
+	punt_espectaculo_fk int NOT NULL,
 	mentor_fk varchar(4) NOT NULL,
 	activo boolean NOT NULL,
 
 	FOREIGN KEY (distrito_fk) REFERENCES distrito(nombre),
-	FOREIGN KEY (mentor_fk) REFERENCES mentor(id_mentor)
+	FOREIGN KEY (punt_espectaculo_fk) REFERENCES puntuacion(calificacion),
+	FOREIGN KEY (mentor_fk) REFERENCES mentor(id_mentor),
 
 ) INHERITS (persona);
 
 
 CREATE TABLE vigilante(
 	id_vigilante varchar(4) NOT NULL UNIQUE, 
-	puesto varchar(30) NOT NULL,
+	puesto varchar(20) NOT NULL,
 	activo boolean NOT NULL
 
 ) INHERITS (persona);
@@ -99,8 +103,11 @@ CREATE TABLE prueba(
 	
 	FOREIGN KEY (grado_dificultad_fk) REFERENCES grado_dificultad(color),
 	FOREIGN KEY (evaluador_fk) REFERENCES vigilante(id_vigilante)
-	--FOREIGN KEY (vencedor_fk) REFERENCES tributo(id_tributo)
+	--FOREIGN KEY (vencedor_fk) REFERENCES participante(id_participante)
 );
+
+--ALTER TABLE prueba ADD vencedor_fk varchar(4) NOT NULL;
+--ALTER TABLE prueba ADD FOREIGN KEY (vencedor_fk) REFERENCES participante(id_participante);
 
 --Participante es mi tabla relación entre Tributo-Prueba
 CREATE TABLE participante(
@@ -110,3 +117,4 @@ CREATE TABLE participante(
 	FOREIGN KEY (codigo_prueba) REFERENCES prueba(codigo),
 	FOREIGN KEY (id_participante) REFERENCES tributo(id_tributo)
 );
+
