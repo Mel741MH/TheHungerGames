@@ -12,34 +12,29 @@ public class Main {
         // El conjunto de resultados (result set) que obtenemos al ejecutar la consulta SQL (select)
         ResultSet result;
 
-        int numHab;
-        int porcentM;
-        int porcentH;
-        String ubicacion;
-        String clima;
-        String LugarInter;
+        String curp,nombre,sexo;
+        int edad;
         
         // conexion.getQuery() ejecuta el método getQuery que se encuentra en la
         // clase MiBD. El parámetro que le pasamos ("select * from clientes") es
         // la consulta SQL que ejecutamos en la base de datos y que nos proporciona
         // un conjunto de resultados (result set)
-        result = conexion.getQuery("select * from Capitolio");
+        result = conexion.getQuery("select * from persona");
         try {
             while(result.next()) {
-                numHab = result.getInt("num_habitantes"); // si el dato que queremos obtener es INT, usamos getInt(nombreColumna)
-                porcentM = result.getInt("porcent_m"); // si el dato que queremos es texto, usamos getString(nombreColumna)
-                porcentH = result.getInt("porcent_h");
-                ubicacion = result.getString("ubicacion");
-                clima = result.getString("clima");
-                LugarInter = result.getString("lugar_inter");
+                curp = result.getString("curp");
+                nombre = result.getString("nombre");
+                sexo = result.getString("sexo");
+                edad = result.getInt("edad");
                 
+                /* Imprime los datos de esas columnas para validar si la conexión
+                se realizó correctamente
                 
-                System.out.println (numHab);
-                System.out.println(porcentM);
-                System.out.println(porcentH);
-                System.out.println(ubicacion);
-                System.out.println(clima);
-                System.out.println(LugarInter);
+                System.out.println (curp);
+                System.out.println(nombre);
+                System.out.println(sexo);
+                System.out.println(edad);
+                */
                 
             }
         }
