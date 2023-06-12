@@ -8,35 +8,38 @@ CREATE TABLE puntuacion(
 	descripcion text NOT NULL
 );
 
-CREATE TYPE name(
+CREATE TYPE name AS(
 	nombre text,
-	apellido text,
+	apellido text
 );
 
 CREATE TABLE persona(
-	curp varchar(18) PRIMARY KEY NOT NULL,
+	id serial,
+	curp varchar(13) PRIMARY KEY NOT NULL,
 	nombre name NOT NULL,
 	sexo varchar(9) NOT NULL,
-	edad int NOT NULL,
+	edad int NOT NULL
 );
 
 CREATE TABLE lider(
-	id_lider varchar(4) NOT NULL UNIQUE
-	--activo boolean NOT NULL,
+	id_lider varchar(4) NOT NULL UNIQUE,
+	activo boolean NOT NULL
 
 ) INHERITS (persona);
 
 CREATE TABLE capitolio(
 	presidente_fk varchar(4) NOT NULL,
 	numero_habitantes int NOT NULL,
-	porcentaje_hombres real NOT NULL,
-	porcentaje_mujeres real NOT NULL,
+	porcentaje_hombres decimal NOT NULL,
+	porcentaje_mujeres decimal NOT NULL,
 	ubicacion text NOT NULL,
 	clima text NOT NULL,
 	lugares_interes text NOT NULL,
 
 	FOREIGN KEY (presidente_fk) REFERENCES lider(id_lider)
 );
+
+--SELECT * FROM capitolio JOIN lider ON capitolio.presidente_fk = lider.id_lider;
 
 CREATE TABLE distrito(
 	nombre varchar(2) PRIMARY KEY NOT NULL,
@@ -49,21 +52,24 @@ CREATE TABLE distrito(
 	ubicacion text NOT NULL,
 	clima text NOT NULL,
 	juegos_ganados int NOT NULL,
-	--tributos_fk varchar(4) NOT NULL,
+	--tributo_f_fk varchar(4) NOT NULL,
+	--tributo_m_fk varchar(4) NOT NULL,
 	controlado_por_capitolio bool,
 
 	FOREIGN KEY (lider_fk) REFERENCES lider(id_lider)
-	--FOREIGN KEY (tributos_fk) REFERENCES tributo(id_tributo)
 );
 
---ALTER TABLE distrito ADD tributos_fk varchar(4) NOT NULL;
---ALTER TABLE distrito ADD FOREIGN KEY (tributos_fk) REFERENCES tributo(id_tributo);
+--ALTER TABLE distrito ADD tributo_f_fk varchar(4) NOT NULL;
+--ALTER TABLE distrito ADD FOREIGN KEY (tributo_f_fk) REFERENCES tributo(id_tributo);
+
+--ALTER TABLE distrito ADD tributo_m_fk varchar(4) NOT NULL;
+--ALTER TABLE distrito ADD FOREIGN KEY (tributo_m_fk) REFERENCES tributo(id_tributo);
 
 CREATE TABLE mentor(
 	id_mentor varchar(4) NOT NULL UNIQUE,
 	distrito_fk varchar(2) NOT NULL,
-	ed_juegos_ganada int NOT NULL, --Cambiar a varchar(3) para '01°'
-	--activo boolean NOT NULL,
+	ed_juegos_ganada varchar(3) NOT NULL,
+	activo boolean NOT NULL,
 
 	FOREIGN KEY (distrito_fk) REFERENCES distrito(nombre)
 
@@ -79,7 +85,7 @@ CREATE TABLE tributo(
 
 	FOREIGN KEY (distrito_fk) REFERENCES distrito(nombre),
 	FOREIGN KEY (punt_espectaculo_fk) REFERENCES puntuacion(calificacion),
-	FOREIGN KEY (mentor_fk) REFERENCES mentor(id_mentor),
+	FOREIGN KEY (mentor_fk) REFERENCES mentor(id_mentor)
 
 ) INHERITS (persona);
 
@@ -96,18 +102,18 @@ CREATE TABLE prueba(
 	nombre varchar(30) NOT NULL,
 	tipo varchar(20) NOT NULL,
 	grado_dificultad_fk varchar(8) NOT NULL,
-	fecha date NOT NULL, --Checar orden de los inserts
+	fecha date NOT NULL,
 	evaluador_fk varchar(4) NOT NULL,
 	--vencedor_fk varchar(4) NOT NULL,
 	tiempo_empleado time NOT NULL,
 	
 	FOREIGN KEY (grado_dificultad_fk) REFERENCES grado_dificultad(color),
 	FOREIGN KEY (evaluador_fk) REFERENCES vigilante(id_vigilante)
-	--FOREIGN KEY (vencedor_fk) REFERENCES participante(id_participante)
+	--FOREIGN KEY (vencedor_fk) REFERENCES tributo(id_tributo)
 );
 
---ALTER TABLE prueba ADD vencedor_fk varchar(4) NOT NULL;
---ALTER TABLE prueba ADD FOREIGN KEY (vencedor_fk) REFERENCES participante(id_participante);
+--ALTER TABLE prueba ADD vencedor_fk varchar(4);
+--ALTER TABLE prueba ADD FOREIGN KEY (vencedor_fk) REFERENCES tributo(id_tributo);
 
 --Participante es mi tabla relación entre Tributo-Prueba
 CREATE TABLE participante(
