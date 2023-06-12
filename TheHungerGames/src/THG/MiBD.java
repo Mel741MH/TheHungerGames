@@ -22,8 +22,7 @@ public class MiBD {
                             pswd);
 
             if(con != null) {
-                    System.out.println("La conexión a la BD: "+ server +" "
-                                    + "se realizo al 100%");
+                    System.out.println("La conexión a la BD se realizo al 100%");
             }
         }
         catch(SQLException ex) {
