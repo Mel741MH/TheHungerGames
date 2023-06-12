@@ -14,8 +14,8 @@ CREATE TYPE name AS(
 );
 
 CREATE TABLE persona(
-	id serial,
-	curp varchar(13) PRIMARY KEY NOT NULL,
+	id serial PRIMARY KEY NOT NULL,
+	curp varchar(13) NOT NULL UNIQUE,
 	nombre name NOT NULL,
 	sexo varchar(9) NOT NULL,
 	edad int NOT NULL

@@ -14,7 +14,8 @@ public class MiBD {
     private static String server = "jdbc:postgresql://localhost:5432/"+bd; //Llamando a nuestro server de BD
     private static String driver = "org.postgresql.Driver";//Driver que permite conectarse con PostgreSQL
     private static Connection con = null; //Para verificar la conexión
-    
+   
+    /*
     public MiBD() {
         try {
             Class.forName(driver);
@@ -31,15 +32,34 @@ public class MiBD {
         catch(ClassNotFoundException ex) {
             System.out.println(ex);
         }
-    }	
+    }
+*/
+    public Connection getConnection() {
+        //Connection connection = null;
+        try {
+            Class.forName(driver);
+            con = (Connection) DriverManager.getConnection(server, user, pswd);
+            //    JOptionPane.showMessageDialog(null,"Conexion Exitosa!!!");
+        } catch (Exception e) {
+            System.out.println("Error al intentar conectarse a la BD "+ server);
+        }
+        return con;
+    }
+
+    public void close(ResultSet rs) {
+        try {
+            rs.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public ResultSet getQuery(String query) {
-        Statement state = null;
         ResultSet result = null;
 
         try {
-            state=(Statement) con.createStatement();
-            result=state.executeQuery(query);
+            Statement statement = con.createStatement();
+            result=statement.executeQuery(query);
         }
         catch (SQLException e) {
             e.printStackTrace();

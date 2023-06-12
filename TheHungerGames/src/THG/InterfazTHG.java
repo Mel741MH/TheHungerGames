@@ -20,15 +20,21 @@ public class InterfazTHG extends javax.swing.JFrame {
     
     Background fondo = new Background();
     
+    MiBD mibd;
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    
     public InterfazTHG() {
         
-        MiBD mibd = new MiBD();
+        mibd = new MiBD();
+        con = null;
+        ps = null;
+        rs = null;
         this.setContentPane(fondo);
         initComponents();
     }
-    
-    PreparedStatement ps;
-    ResultSet rs;
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -167,8 +173,8 @@ public class InterfazTHG extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,16 +193,14 @@ public class InterfazTHG extends javax.swing.JFrame {
     }
     
     private void btn_insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertarActionPerformed
-        Connection con = null;
-        
+
         try{
-            con = getConnection();
-            ps = con.prepareStatement("INSERT INTO persona (curp,nombre,sexo,edad) VALUES(?,?,?,?)");
-            ps.setString(4, txt_id.getText());
+            con = mibd.getConnection();
+            ps = con.prepareStatement("INSERT INTO persona (curp, nombre, sexo, edad) VALUES(?, ?, ?, ?);");
             ps.setString(1, txt_curp.getText());
             ps.setString(2, txt_nombre.getText());
             ps.setString(3, cbx_sexo.getSelectedItem().toString());
-            ps.setString(4, txt_edad.getText());
+            ps.setInt(4, Integer.parseInt(txt_edad.getText()));
             
             int res = ps.executeUpdate();
             
@@ -216,22 +220,24 @@ public class InterfazTHG extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_insertarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        Connection con = null;
+        
         
         try{
-            con = getConnection();
-            ps = con.prepareStatement("SELECT * FROM persona WHERE id = ?");
-            ps.setString(1,txt_id.getText());
+            //MiBD mibd = new MiBD();
+            con = mibd.getConnection();
+            ps = con.prepareStatement("SELECT * FROM persona WHERE id = ?;");
+            ps.setInt(1, Integer.parseInt(txt_id.getText()));
             
             rs = ps.executeQuery();
             if(rs.next()){
                 txt_curp.setText(rs.getString("curp"));
                 txt_nombre.setText(rs.getString("nombre"));
                 cbx_sexo.setSelectedItem(rs.getString("sexo"));
-                txt_edad.setText(rs.getString("edad"));
+                txt_edad.setText(String.valueOf(rs.getInt("edad")));
             } else{
-                JOptionPane.showMessageDialog(null, "Error: No existen registro de esa persona.");
+                JOptionPane.showMessageDialog(null, "Error: No existe registro de esa persona.");
             }
+            con.close();
             
         } catch(SQLException e){
             Logger.getLogger(MiBD.class.getName()).log(Level.SEVERE, null, e);
@@ -240,10 +246,9 @@ public class InterfazTHG extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        Connection con = null;
-        
+
         try{
-            con = getConnection();
+            con = mibd.getConnection();
             ps = con.prepareStatement("UPDATE persona SET curp=?,nombre=?,sexo=?,edad=? WHERE id=?");
             
             ps.setString(1, txt_id.getText());
@@ -277,7 +282,7 @@ public class InterfazTHG extends javax.swing.JFrame {
             con = getConnection();
             ps = con.prepareStatement("DELETE FROM persona WHERE id=?");
             
-            ps.setInt(1,Inter.parseInt(txt_id.getText()));
+            ps.setInt(1,Integer.parseInt(txt_id.getText()));
             
             int res = ps.executeUpdate();
             
