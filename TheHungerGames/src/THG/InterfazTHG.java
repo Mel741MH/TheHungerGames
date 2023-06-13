@@ -196,11 +196,13 @@ public class InterfazTHG extends javax.swing.JFrame {
 
         try{
             con = mibd.getConnection();
-            ps = con.prepareStatement("INSERT INTO persona (curp, nombre, sexo, edad) VALUES(?, ?, ?, ?);");
+            ps = con.prepareStatement("INSERT INTO persona (curp, nombre, sexo, edad,activo) VALUES(?, ?, ?, ?,true);");
             ps.setString(1, txt_curp.getText());
             ps.setString(2, txt_nombre.getText());
             ps.setString(3, cbx_sexo.getSelectedItem().toString());
             ps.setInt(4, Integer.parseInt(txt_edad.getText()));
+            
+            //txt_id.setEnabled(false);
             
             int res = ps.executeUpdate();
             
@@ -225,7 +227,7 @@ public class InterfazTHG extends javax.swing.JFrame {
         try{
             //MiBD mibd = new MiBD();
             con = mibd.getConnection();
-            ps = con.prepareStatement("SELECT * FROM persona WHERE id = ?;");
+            ps = con.prepareStatement("SELECT * FROM persona WHERE id = ? AND activo = true;");
             ps.setInt(1, Integer.parseInt(txt_id.getText()));
             
             rs = ps.executeQuery();
@@ -250,13 +252,12 @@ public class InterfazTHG extends javax.swing.JFrame {
         try{
             con = mibd.getConnection();
             ps = con.prepareStatement("UPDATE persona SET curp=?,nombre=?,sexo=?,edad=? WHERE id=?");
-            
-            ps.setString(1, txt_id.getText());
-            ps.setString(2, txt_curp.getText());
-            ps.setString(3, txt_nombre.getText());
-            ps.setString(4, cbx_sexo.getSelectedItem().toString());
-            ps.setString(5, txt_edad.getText());
-            
+           
+            ps.setString(1, txt_curp.getText());
+            ps.setString(2, txt_nombre.getText());
+            ps.setString(3, cbx_sexo.getSelectedItem().toString());
+            ps.setInt(4, Integer.parseInt(txt_edad.getText()));
+            ps.setInt(5, Integer.parseInt(txt_id.getText()));
             
             int res = ps.executeUpdate();
             
@@ -276,11 +277,10 @@ public class InterfazTHG extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        Connection con = null;
-        
+
         try{
-            con = getConnection();
-            ps = con.prepareStatement("DELETE FROM persona WHERE id=?");
+            con = mibd.getConnection();
+            ps = con.prepareStatement("UPDATE persona SET activo= false WHERE id=?");
             
             ps.setInt(1,Integer.parseInt(txt_id.getText()));
             

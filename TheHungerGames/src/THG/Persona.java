@@ -10,6 +10,7 @@ public class Persona {
     private String nombre;
     private String sexo;
     private int edad;
+    private boolean activo;
 
     //Constructor vacío, para inicializar el objeto
     public Persona() {
@@ -21,6 +22,7 @@ public class Persona {
         this.nombre = nombre;
         this.sexo = sexo;
         this.edad = edad;
+        this.activo = activo;
     }
     
     //Sobrecarga de constructor, utiliza el mismo nombre de un constructor ya existen pero cambio parametros
@@ -30,6 +32,7 @@ public class Persona {
         this.nombre = nombre;
         this.sexo = sexo;
         this.edad = edad;
+        this.activo = activo;
     }
     
     //Getter y Setter
@@ -73,10 +76,18 @@ public class Persona {
         this.edad = edad;
     }
 
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
     //Devuelve una cadena con los valores de todos los atributos
     @Override
     public String toString() {
-        return "Persona{" + "id=" + id + ", curp=" + curp + ", nombre=" + nombre + ", sexo=" + sexo + ", edad=" + edad + '}';
+        return "Persona{" + "id=" + id + ", curp=" + curp + ", nombre=" + nombre + ", sexo=" + sexo + ", edad=" + edad + ", activo=" + activo +'}';
     }
     
     

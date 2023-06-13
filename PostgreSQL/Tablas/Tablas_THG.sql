@@ -18,12 +18,12 @@ CREATE TABLE persona(
 	curp varchar(13) NOT NULL UNIQUE,
 	nombre name NOT NULL,
 	sexo varchar(9) NOT NULL,
-	edad int NOT NULL
+	edad int NOT NULL,
+	activo boolean NOT NULL
 );
 
 CREATE TABLE lider(
-	id_lider varchar(4) NOT NULL UNIQUE,
-	activo boolean NOT NULL
+	id_lider varchar(4) NOT NULL UNIQUE
 
 ) INHERITS (persona);
 
@@ -68,8 +68,7 @@ CREATE TABLE distrito(
 CREATE TABLE mentor(
 	id_mentor varchar(4) NOT NULL UNIQUE,
 	distrito_fk varchar(2) NOT NULL,
-	ed_juegos_ganada varchar(3) NOT NULL,
-	activo boolean NOT NULL,
+	ed_juegos_ganada varchar(3) NOT NULL
 
 	FOREIGN KEY (distrito_fk) REFERENCES distrito(nombre)
 
@@ -80,8 +79,7 @@ CREATE TABLE tributo(
 	distrito_fk varchar(2) NOT NULL,
 	habilidad varchar(50) NOT NULL,
 	punt_espectaculo_fk int NOT NULL,
-	mentor_fk varchar(4) NOT NULL,
-	activo boolean NOT NULL,
+	mentor_fk varchar(4) NOT NULL
 
 	FOREIGN KEY (distrito_fk) REFERENCES distrito(nombre),
 	FOREIGN KEY (punt_espectaculo_fk) REFERENCES puntuacion(calificacion),
@@ -92,8 +90,7 @@ CREATE TABLE tributo(
 
 CREATE TABLE vigilante(
 	id_vigilante varchar(4) NOT NULL UNIQUE, 
-	puesto varchar(20) NOT NULL,
-	activo boolean NOT NULL
+	puesto varchar(20) NOT NULL
 
 ) INHERITS (persona);
 

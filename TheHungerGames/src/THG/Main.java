@@ -29,10 +29,10 @@ public class Main {
                 persona.setNombre(result.getString("nombre"));
                 persona.setSexo(result.getString("sexo"));
                 persona.setEdad(result.getInt("edad"));
+                persona.setActivo(result.getBoolean("activo"));
                 
                 /* Imprime los datos de esas columnas para validar si la conexión
                 se realizó correctamente*/
-                
                 System.out.println(persona.toString());
                 
             }

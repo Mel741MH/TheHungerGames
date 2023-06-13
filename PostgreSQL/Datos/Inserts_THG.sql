@@ -22,20 +22,34 @@ INSERT INTO puntuacion VALUES (12,'Excepcional');
 
 --Tabla Líderes
 
-INSERT INTO lider VALUES (1,'SNOC421224CAP','Coriolanus Snow','Masculino',84,'P000',true);
-INSERT INTO lider VALUES (2,'HEAC710412D01','Cassius Heath','Masculino',52,'L001',true);
-INSERT INTO lider VALUES (3,'SCRB590829D02','Benicius Scraut','Masculino',64,'L002',true);
-INSERT INTO lider VALUES (4,'ZICP740117D03','Patricia Zicker','Femenino',49,'L003',true);
-INSERT INTO lider VALUES (5,'LUXG871128D04','Gianiria Luxor','Femenino',36,'L004',true);
-INSERT INTO lider VALUES (6,'PYRL750902D05','Laurette Pyrmont','Femenino',48,'L005',true);
-INSERT INTO lider VALUES (7,'GRAB521004D06','Grandel Brandestetter','Masculino',71,'L006',true);
-INSERT INTO lider VALUES (8,'STEJ650616D07','Julio Sterlingshire','Masculino',58,'L007',true);
-INSERT INTO lider VALUES (9,'BAYC780511D08','Closs Bayon','Femenino',45,'L008',true);
-INSERT INTO lider VALUES (10,'PHOD570730D09','Dominic Phox','Masculino',66,'L009',true);
-INSERT INTO lider VALUES (11,'WINA890214D10','Artemis Windrunner','Femenino',34,'L010',true);
-INSERT INTO lider VALUES (12,'CRAL640925D11','Legume Crathor','Masculino',59,'L011',true);
-INSERT INTO lider VALUES (13,'UNDS731204D12','Sawyer Undersee','Masculino',50,'L012',true);
-INSERT INTO lider VALUES (14,'COIA610929D13','Alma Coin','Femenino',62,'L013',true);
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider) 
+VALUES ('SNOC421224CAP','Coriolanus Snow','Masculino',84,true,'P000');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('HEAC710412D01','Cassius Heath','Masculino',52,true,'L001');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('SCRB590829D02','Benicius Scraut','Masculino',64,true,'L002');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('ZICP740117D03','Patricia Zicker','Femenino',49,true,'L003');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('LUXG871128D04','Gianiria Luxor','Femenino',36,true,'L004');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('PYRL750902D05','Laurette Pyrmont','Femenino',48,true,'L005');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('GRAB521004D06','Grandel Brandestetter','Masculino',71,true,'L006');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('STEJ650616D07','Julio Sterlingshire','Masculino',58,true,'L007');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('BAYC780511D08','Closs Bayon','Femenino',45,true,'L008');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('PHOD570730D09','Dominic Phox','Masculino',66,true,'L009');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('WINA890214D10','Artemis Windrunner','Femenino',34,true,'L010');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('CRAL640925D11','Legume Crathor','Masculino',59,true,'L011');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('UNDS731204D12','Sawyer Undersee','Masculino',50,true,'L012');
+INSERT INTO lider (curp, nombre,sexo,edad,activo,id_lider)
+VALUES ('COIA610929D13','Alma Coin','Femenino',62,true,'L013');
 
 --Tabla Capitolio
 
@@ -127,78 +141,96 @@ UPDATE distrito SET tributo_m_fk = 'T122' WHERE nombre = '12';
 
 --Tabla Mentores
 
-INSERT INTO mentor VALUES (15,'DIMA670729D01','Auroora Dimond', 'Femenino', 56, 'M001','1', '67°',true);
-INSERT INTO mentor VALUES (16,'CAPC880217D02','Chester Capin', 'Masculino', 35, 'M002','2', '73°',true);
-INSERT INTO mentor VALUES (17,'LEXS720131D03','Sebastien Lexa', 'Masculino', 51, 'M003','3', '54°',true);
-INSERT INTO mentor VALUES (18,'BROL590827D04','Lethia Brosh', 'Femenino', 64, 'M004','4', '33°',true);
-INSERT INTO mentor VALUES (19,'RAYL710531D05','Lindie Rayson', 'Femenino', 52, 'M005','5', '59°',true);
-INSERT INTO mentor VALUES (20,'REDB760228D06','Beltran Reder', 'Masculino', 47, 'M006','6', '57°',true);
-INSERT INTO mentor VALUES (21,'BARL000110D07','Liza Barthel', 'Femenino', 23, 'M007','7', '72°',true);
-INSERT INTO mentor VALUES (22,'LENA831024D08','Andrus Lenchenko', 'Masculino', 40, 'M008','8', '58°',true);
-INSERT INTO mentor VALUES (23,'HILR550630D09','Roderich Hilary', 'Masculino', 68, 'M009','9', '42°',true);
-INSERT INTO mentor VALUES (24,'DUMH670419D10','Hardis Dumblton', 'Masculino', 56, 'M010','10', '68°',true);
-INSERT INTO mentor VALUES (25,'PRES800329D11','Sky Pretious', 'Femenino', 43, 'M011','11', '45°',true);
-INSERT INTO mentor VALUES (26,'ABEH831201D12','Haymicht Abernathy', 'Masculino', 40, 'M012','12', '50°',true);
+INSERT INTO mentor (curp, nombre,sexo,edad,activo,id_mentor,distrito_fk,ed_juegos_ganada)
+VALUES ('DIMA670729D01','Auroora Dimond', 'Femenino', 56, true,'M001','1', '67°');
+INSERT INTO mentor (curp, nombre,sexo,edad,activo,id_mentor,distrito_fk,ed_juegos_ganada)
+VALUES ('CAPC880217D02','Chester Capin', 'Masculino', 35, true, 'M002','2', '73°');
+INSERT INTO mentor (curp, nombre,sexo,edad,activo,id_mentor,distrito_fk,ed_juegos_ganada)
+VALUES ('LEXS720131D03','Sebastien Lexa', 'Masculino', 51, true,'M003','3', '54°');
+INSERT INTO mentor (curp, nombre,sexo,edad,activo,id_mentor,distrito_fk,ed_juegos_ganada)
+VALUES ('BROL590827D04','Lethia Brosh', 'Femenino', 64, true,'M004','4', '33°');
+INSERT INTO mentor (curp, nombre,sexo,edad,activo,id_mentor,distrito_fk,ed_juegos_ganada)
+VALUES ('RAYL710531D05','Lindie Rayson', 'Femenino', 52, true, 'M005','5', '59°');
+INSERT INTO mentor (curp, nombre,sexo,edad,activo,id_mentor,distrito_fk,ed_juegos_ganada)
+VALUES ('REDB760228D06','Beltran Reder', 'Masculino', 47, true, 'M006','6', '57°');
+INSERT INTO mentor (curp, nombre,sexo,edad,activo,id_mentor,distrito_fk,ed_juegos_ganada)
+VALUES ('BARL000110D07','Liza Barthel', 'Femenino', 23, true, 'M007','7', '72°');
+INSERT INTO mentor (curp, nombre,sexo,edad,activo,id_mentor,distrito_fk,ed_juegos_ganada)
+VALUES ('LENA831024D08','Andrus Lenchenko', 'Masculino', 40, true,'M008','8', '58°');
+INSERT INTO mentor (curp, nombre,sexo,edad,activo,id_mentor,distrito_fk,ed_juegos_ganada)
+VALUES ('HILR550630D09','Roderich Hilary', 'Masculino', 68, true, 'M009','9', '42°');
+INSERT INTO mentor (curp, nombre,sexo,edad,activo,id_mentor,distrito_fk,ed_juegos_ganada)
+VALUES ('DUMH670419D10','Hardis Dumblton', 'Masculino', 56, true, 'M010','10', '68°');
+INSERT INTO mentor (curp, nombre,sexo,edad,activo,id_mentor,distrito_fk,ed_juegos_ganada)
+VALUES ('PRES800329D11','Sky Pretious', 'Femenino', 43, true,'M011','11', '45°');
+INSERT INTO mentor (curp, nombre,sexo,edad,activo,id_mentor,distrito_fk,ed_juegos_ganada)
+VALUES ('ABEH831201D12','Haymicht Abernathy', 'Masculino', 40, true,'M012','12', '50°');
 
 --Tabla Tributo
 
-INSERT INTO tributo VALUES (27,'VONG060214D01','Glimmer VonLuxe', 'Femenino',17,'T011','1','Espada',
-							10,'M001',true);
-INSERT INTO tributo VALUES (28,'HAWM060325D01','Marvel Hawthorne', 'Masculino',17,'T012','1','Daga',
-							9,'M001',true);
-INSERT INTO tributo VALUES (29,'SINC081009D02','Clove Sinclair', 'Femenino',15,'T021','2','Hacha',
-							10,'M002',true);
-INSERT INTO tributo VALUES (30,'STEC050519D02','Cato Sterling', 'Masculino',18,'T022','2','Guadaña',
-							10,'M002',true);
-INSERT INTO tributo VALUES (31,'MONL100308D03','Lucy Montrose', 'Femenino',13,'T031','3','Lanza',
-							6,'M003',true);
-INSERT INTO tributo VALUES (32,'AURI090119D03','Ian Aurelius', 'Masculino',14,'T032','3','Minas',
-							7,'M003',true);
-INSERT INTO tributo VALUES (33,'MACI070929D04','Tara Macken', 'Femenino',16,'T041','4','Espada con diente',
-							6,'M004',true);
-INSERT INTO tributo VALUES (34,'ROSB111105D04','Breck Rosenthal', 'Masculino',12,'T042','4','Puñal',
-							5,'M004',true);
-INSERT INTO tributo VALUES (35,'BLAF080930D05','Foxface Blackwood', 'Femenino',15,'T051','5','Cuchillo',
-							8,'M005',true);
-INSERT INTO tributo VALUES (36,'MARA080910D05','Alexander Mark', 'Masculino',15,'T052','5','Hoz',
-							7,'M005',true);
-INSERT INTO tributo VALUES (37,'PETK081201D06','Kara Petersen', 'Femenino',15,'T061','6','Arco y Flecha',
-							7,'M006',true);
-INSERT INTO tributo VALUES (38,'MOIA071031D06','Ashton Moio', 'Masculino',16,'T062','6','Combate cuerpo a cuerpo',
-							7,'M006',true);
-INSERT INTO tributo VALUES (39,'HANL060627D07','Leigha Hancock', 'Femenino',17,'T071','7','Lanzar cuchillos',
-							6,'M007',true);
-INSERT INTO tributo VALUES (40,'LEES060207D07','Sam Lee', 'Masculino',17,'T072','7','Machete',
-							9,'M007',true);
-INSERT INTO tributo VALUES (41,'LINM080802D08','Mackenzie Lintz', 'Femenino',15,'T081','8','Lanza',
-							6,'M008',true);
-INSERT INTO tributo VALUES (42,'TANS091121D08','Samuel Tan', 'Masculino',14,'T082','8','Cuchillo',
-							7,'M008',true);
-INSERT INTO tributo VALUES (43,'THUA090503D09','Annie Thurman', 'Femenino',14,'T091','9','Espada',
-							6,'M009',true);
-INSERT INTO tributo VALUES (44,'FREI091001D09','Imanol Freeman', 'Masculino',14,'T092','9','Hacha',
-							5,'M009',true);
-INSERT INTO tributo VALUES (45,'HOOD071014D10','Dakota Hood', 'Femenino',16,'T101','10','Daga',
-							5,'M010',true);
-INSERT INTO tributo VALUES (46,'MARJ050729D10','Jeremy Marinas', 'Masculino',18,'T102','10','Fuerza Física',
-							7,'M010',true);
-INSERT INTO tributo VALUES (47,'HOLR111204D11','Rue Holmes', 'Femenino',12,'T111','11','Honda y Piedra',
-							7,'M011',true);
-INSERT INTO tributo VALUES (48,'OKET050612D11','Tresh Oken', 'Masculino',18,'T112','11','Fuerza Bruta',
-							7,'M011',true);
-INSERT INTO tributo VALUES (49,'EVEK070508D12','Katniss Everdeen', 'Femenino',16,'T121','12','Arco y Flecha',
-							11,'M012',true);
-INSERT INTO tributo VALUES (50,'MELP070830D12','Peeta Mellark', 'Masculino',16,'T122','12','Camuflaje',
-							8,'M012',true);
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('VONG060214D01','Glimmer VonLuxe', 'Femenino',17,true,'T011','1','Espada',10,'M001');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('HAWM060325D01','Marvel Hawthorne', 'Masculino',17,true,'T012','1','Daga',9,'M001');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('SINC081009D02','Clove Sinclair', 'Femenino',15,true,'T021','2','Hacha',10,'M002');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('STEC050519D02','Cato Sterling', 'Masculino',18,true,'T022','2','Guadaña',10,'M002');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('MONL100308D03','Lucy Montrose', 'Femenino',13,true,'T031','3','Lanza',6,'M003');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('AURI090119D03','Ian Aurelius', 'Masculino',14,true,'T032','3','Minas',7,'M003');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('MACI070929D04','Tara Macken', 'Femenino',16,true,'T041','4','Espada con diente',6,'M004');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('ROSB111105D04','Breck Rosenthal', 'Masculino',12,true,'T042','4','Puñal',5,'M004');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('BLAF080930D05','Foxface Blackwood', 'Femenino',15,true,'T051','5','Cuchillo',8,'M005');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('MARA080910D05','Alexander Mark', 'Masculino',15,true,'T052','5','Hoz',7,'M005');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('PETK081201D06','Kara Petersen', 'Femenino',15,true,'T061','6','Arco y Flecha',7,'M006');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('MOIA071031D06','Ashton Moio', 'Masculino',16,true,'T062','6','Combate cuerpo a cuerpo',7,'M006');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('HANL060627D07','Leigha Hancock', 'Femenino',17,true,'T071','7','Lanzar cuchillos',6,'M007');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('LEES060207D07','Sam Lee', 'Masculino',17,true,'T072','7','Machete',9,'M007');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('LINM080802D08','Mackenzie Lintz', 'Femenino',15,true,'T081','8','Lanza',6,'M008');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('TANS091121D08','Samuel Tan', 'Masculino',14,true,'T082','8','Cuchillo',7,'M008');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('THUA090503D09','Annie Thurman', 'Femenino',14,true,'T091','9','Espada',6,'M009');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('FREI091001D09','Imanol Freeman', 'Masculino',14,true,'T092','9','Hacha',5,'M009');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('HOOD071014D10','Dakota Hood', 'Femenino',16,true,'T101','10','Daga',5,'M010');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('MARJ050729D10','Jeremy Marinas', 'Masculino',18,true,'T102','10','Fuerza Física',7,'M010');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('HOLR111204D11','Rue Holmes', 'Femenino',12,true,'T111','11','Honda y Piedra',7,'M011');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('OKET050612D11','Tresh Oken', 'Masculino',18,true,'T112','11','Fuerza Bruta',7,'M011');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('EVEK070508D12','Katniss Everdeen', 'Femenino',16,true,'T121','12','Arco y Flecha',11,'M012');
+INSERT INTO tributo (curp, nombre,sexo,edad,activo,id_tributo,distrito_fk,habilidad,punt_espectaculo_fk,mentor_fk)
+VALUES ('MELP070830D12','Peeta Mellark', 'Masculino',16,true,'T122','12','Camuflaje',8,'M012');
 
 --Tabla Vigilante
 
-INSERT INTO vigilante VALUES (51,'LYNA700319V01','Alejandro Lynthal', 'Masculino', 50,'V001','Seguridad',true);
-INSERT INTO vigilante VALUES (52,'KASR001030V02','Renie Kasting', 'Masculino', 23,'V002','Militar',true);
-INSERT INTO vigilante VALUES (53,'TROB890119V03','Bobbie Trorey', 'Masculino', 34,'V003','Guardia',true);
-INSERT INTO vigilante VALUES (54,'CRAS781203V04','Seneca Crane', 'Masculino', 45,'V004','Seguridad',true);
-INSERT INTO vigilante VALUES (55,'HEAP740507V05','Plutarch Heavensbee', 'Masculino', 49,'V005','Militar',true);
-INSERT INTO vigilante VALUES (56,'CHEH950428V06','Hervey Cheine', 'Masculino', 28,'V006','Guardia',true);
+INSERT INTO vigilante (curp, nombre,sexo,edad,activo,id_vigilante,puesto) 
+VALUES ('LYNA700319V01','Alejandro Lynthal', 'Masculino', 50,true,'V001','Seguridad');
+INSERT INTO vigilante (curp, nombre,sexo,edad,activo,id_vigilante,puesto)
+VALUES ('KASR001030V02','Renie Kasting', 'Masculino', 23,true,'V002','Militar');
+INSERT INTO vigilante (curp, nombre,sexo,edad,activo,id_vigilante,puesto)
+VALUES ('TROB890119V03','Bobbie Trorey', 'Masculino', 34,true,'V003','Guardia');
+INSERT INTO vigilante (curp, nombre,sexo,edad,activo,id_vigilante,puesto)
+VALUES ('CRAS781203V04','Seneca Crane', 'Masculino', 45,true,'V004','Seguridad');
+INSERT INTO vigilante (curp, nombre,sexo,edad,activo,id_vigilante,puesto)
+VALUES ('HEAP740507V05','Plutarch Heavensbee', 'Masculino', 49,true,'V005','Militar');
+INSERT INTO vigilante (curp, nombre,sexo,edad,activo,id_vigilante,puesto)
+VALUES ('CHEH950428V06','Hervey Cheine', 'Masculino', 28,true,'V006','Guardia');
 
 --Tabla Prueba
 
