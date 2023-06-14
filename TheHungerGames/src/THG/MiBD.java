@@ -15,7 +15,7 @@ public class MiBD {
     private static String driver = "org.postgresql.Driver";//Driver que permite conectarse con PostgreSQL
     private static Connection con = null; //Para verificar la conexión
    
-    /*
+    
     public MiBD() {
         try {
             Class.forName(driver);
@@ -33,7 +33,7 @@ public class MiBD {
             System.out.println(ex);
         }
     }
-*/
+    
     public Connection getConnection() {
         //Connection connection = null;
         try {
