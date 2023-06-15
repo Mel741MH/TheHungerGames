@@ -11,7 +11,6 @@ public class Main {
         
         // El conjunto de resultados (result set) que obtenemos al ejecutar la consulta SQL (select)
         ResultSet result;
-
         
         // conexion.getQuery() ejecuta el método getQuery que se encuentra en la clase MiBD.
         // El parámetro que le pasamos ("select * from persona") es la consulta SQL que ejecutamos en

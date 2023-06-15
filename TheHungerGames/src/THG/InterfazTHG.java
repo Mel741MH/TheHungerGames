@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package THG;
 
 import java.awt.Graphics;
@@ -34,7 +30,7 @@ public class InterfazTHG extends javax.swing.JFrame {
         rs = null;
         this.setContentPane(fondo);
         initComponents();
-        MostrarPersonas();
+        MostrarPersonas(); //Para que en todo momento me muestre la tabla
     }
     
     public void MostrarPersonas (){
@@ -97,15 +93,19 @@ public class InterfazTHG extends javax.swing.JFrame {
 
         cbx_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Femenino", "Masculino" }));
 
-        lbl_id.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_id.setForeground(new java.awt.Color(102, 255, 102));
         lbl_id.setText("ID:");
 
+        lbl_curp.setForeground(new java.awt.Color(102, 255, 102));
         lbl_curp.setText("CURP:");
 
+        lbl_nombre.setForeground(new java.awt.Color(102, 255, 102));
         lbl_nombre.setText("Nombre:");
 
+        lbl_sexo.setForeground(new java.awt.Color(102, 255, 102));
         lbl_sexo.setText("Género:");
 
+        lbl_edad.setForeground(new java.awt.Color(102, 255, 102));
         lbl_edad.setText("Edad:");
 
         txt_curp.addActionListener(new java.awt.event.ActionListener() {
@@ -296,6 +296,7 @@ public class InterfazTHG extends javax.swing.JFrame {
             MostrarPersonas();
             
             con.close();
+            
         } catch(SQLException e){
             Logger.getLogger(MiBD.class.getName()).log(Level.SEVERE, null, e);
             System.err.println(e);
@@ -303,8 +304,7 @@ public class InterfazTHG extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_insertarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        
-        
+
         try{
             //MiBD mibd = new MiBD();
             con = mibd.getConnection();
@@ -321,8 +321,7 @@ public class InterfazTHG extends javax.swing.JFrame {
             } else{
                 JOptionPane.showMessageDialog(null, "Error: No existe registro de esa persona.");
             }
-            
-            
+
             con.close();
             
         } catch(SQLException e){

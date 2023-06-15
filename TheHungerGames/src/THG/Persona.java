@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package THG;
 
 public class Persona {
@@ -15,7 +11,6 @@ public class Persona {
     //Constructor vacío, para inicializar el objeto
     public Persona() {
     }
-
     
     public Persona(String curp, String nombre, String sexo, int edad) {
         this.curp = curp;
@@ -89,6 +84,5 @@ public class Persona {
     public String toString() {
         return "Persona{" + "id=" + id + ", curp=" + curp + ", nombre=" + nombre + ", sexo=" + sexo + ", edad=" + edad + ", activo=" + activo +'}';
     }
-    
     
 }
